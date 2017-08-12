@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './containers/search_bar';
+import WeatherList from './containers/weather_list';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
@@ -15,6 +16,7 @@ export default class App extends Component{
     return(
       <div>
         <SearchBar />
+        <WeatherList />
       </div>
     )
   }
@@ -24,6 +26,6 @@ export default class App extends Component{
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
+  ,document.getElementById('root')
 );
