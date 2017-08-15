@@ -15,9 +15,12 @@ class PostsIndex extends Component {
     return _.map(this.props.posts, post =>{
       return(
         <ListGroupItem key={post.id}>
-          <Panel header={post.title}>
-            {post.content}
-          </Panel>
+          <Link to={`/posts/${post.id}`}>
+            <Panel header={post.title}>
+              {post.content}
+              <h6>#{post.id} - {post.categories}</h6>
+            </Panel>
+          </Link>
         </ListGroupItem>
       )
     })

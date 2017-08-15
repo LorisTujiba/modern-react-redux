@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_PARTICULAR_POST } from '../actions/index';
+import { FETCH_POSTS, FETCH_PARTICULAR_POST, DELETE_POST } from '../actions/index';
 import _ from 'lodash';
 
 //export default function(state = [], action){  < initial state is array
@@ -6,13 +6,15 @@ import _ from 'lodash';
 //luckily, lodash provide mapKeys
 export default function(state = {}, action){
   switch(action.type){
+    case DELETE_POST:
+      return _.omit(state,action.payload);
     case FETCH_PARTICULAR_POST:
       // const post = action.payload.data;
       // const newState = { ...state };
       // newState[post.id] = post;
       // return newState; << this guys ES5
 
-      return { ...state, [action.payload.data.id] : action.payload.data} // << refactor using ES6 new syntax
+      return { ...state, [action.payload.data.id] : action.payload.data}; // << refactor using ES6 new syntax
       //that square braces is not making new array, its called key interpolation
       //whatever the variable of action.payload.data.id is, make a new key
       //of this object (remember '{' '}') using action.payload.data.id's
