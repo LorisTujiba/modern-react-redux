@@ -7,10 +7,6 @@ import { ListGroup, ListGroupItem, Grid, Col, Row, Panel, Button} from 'react-bo
 import _ from 'lodash';
 
 class PostsIndex extends Component {
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchPosts();
   }

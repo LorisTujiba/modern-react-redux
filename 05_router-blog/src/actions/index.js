@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
+export const FETCH_PARTICULAR_POST = 'FETCH_PARTICULAR_POST';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=tujiba';
@@ -21,6 +22,15 @@ export function createPost(values, callback){
 
   return {
     type: CREATE_POSTS,
+    payload : req
+  };
+}
+
+export function fetchParticularPost(id){
+  const req = axios.post(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: FETCH_PARTICULAR_POST,
     payload : req
   };
 }
